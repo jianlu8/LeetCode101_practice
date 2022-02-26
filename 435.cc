@@ -67,7 +67,7 @@ int main(int argc, char const *argv[])
 
     Solution sol;
 
-    result = sol.eraseOverlapIntervalsAnswer(intervals);
+    result = sol.eraseOverlapIntervals(intervals);
 
     // cout << g[1] << endl;
     cout << result <<endl;

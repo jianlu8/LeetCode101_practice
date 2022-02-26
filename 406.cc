@@ -22,6 +22,7 @@ inline
         for (int i = 0; i < people.size(); ++i)
         {
             queue.insert(queue.begin() + people[i][1], people[i]);
+            cout << queue.begin()[0][0] << "!!!!" << people[i][1];
         }
         return queue;
     }
