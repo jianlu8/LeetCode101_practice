@@ -34,7 +34,7 @@ public:
 
 int main(int argc, char const *argv[]){
 
-    int a = 18;
+    int a = 33;
 
     Solution sol;
 
