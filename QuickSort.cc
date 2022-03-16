@@ -14,16 +14,23 @@ void quick_sort(vector<int> &nums, int l, int r) {
   while (first < last) {
     while (first < last && nums[last] >= key) {
       --last;
+      cout << "last = " << last << endl;
     }
+    cout << "num last = " << nums[last] << endl;
     nums[first] = nums[last];
     while (first < last && nums[first] <= key) {
       ++first;
+      cout << "first = " << first << endl;
     }
+    cout << "num first = " << nums[first] << endl;
     nums[last] = nums[first];
   }
   nums[first] = key;
+  cout << "----- loop ------" << endl;
+  cout << "first = " << first << endl;
   quick_sort(nums, l, first);
   quick_sort(nums, first + 1, r);
+  
 }
 
 void merge_sort(vector<int> &nums, int l, int r, vector<int> &temp) {
@@ -85,14 +92,25 @@ void selection_sort(vector<int> &nums, int n) {
   }
 }
 
-void sort() {
-  vector<int> nums = {1, 3, 5, 7, 2, 6, 4, 8, 9, 2,
-                      8, 7, 6, 0, 3, 5, 9, 4, 1, 0};
+
+int main(int argc, char const *argv[])
+{
+	vector<int> nums = {1, 3, 4, 6};
+  // vector<int> nums = {1, 3, 5, 7, 2, 6, 4, 8, 9, 2,
+  //                     8, 7, 6, 0, 3, 5, 9, 4, 1, 0};
   vector<int> temp(nums.size());
-  sort(nums.begin(), nums.end());
   quick_sort(nums, 0, nums.size());
-  merge_sort(nums, 0, nums.size(), temp);
-  insertion_sort(nums, nums.size());
-  bubble_sort(nums, nums.size());
-  selection_sort(nums, nums.size());
 }
+
+
+// void sort() {
+//   vector<int> nums = {1, 3, 5, 7, 2, 6, 4, 8, 9, 2,
+//                       8, 7, 6, 0, 3, 5, 9, 4, 1, 0};
+//   vector<int> temp(nums.size());
+//   sort(nums.begin(), nums.end());
+//   quick_sort(nums, 0, nums.size());
+//   merge_sort(nums, 0, nums.size(), temp);
+//   insertion_sort(nums, nums.size());
+//   bubble_sort(nums, nums.size());
+//   selection_sort(nums, nums.size());
+// }
