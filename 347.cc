@@ -3,6 +3,7 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -13,7 +14,9 @@ class Solution {
         int max_count = 0;
         for (const int& num : nums) {
             max_count = max(max_count, ++counts[num]);
+            
         }
+        std::cout << max_count << endl;
         vector<vector<int>> buckets(max_count + 1);
         for (const auto& p : counts) {
             buckets[p.second].push_back(p.first);
@@ -32,11 +35,15 @@ class Solution {
 };
 
 int main(int argc, char const* argv[]) {
-    vector<int> nums = {5, 7, 7, 8, 8, 10, 10};
-    int k = 2;
+    vector<int> nums = {5,7,5, 10, 10};
+    int k = 1;
 
     Solution sol;
 
     vector<int> out = sol.topKFrequent(nums, k);
-    std::cout << out[0] << std::endl;
+    for (int i = 0; i < out.size(); ++i)
+    {
+        std::cout << out[i] << std::endl;
+    }
+    
 }
