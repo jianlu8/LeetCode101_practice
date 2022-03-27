@@ -100,6 +100,10 @@ int main(int argc, char const *argv[])
   //                     8, 7, 6, 0, 3, 5, 9, 4, 1, 0};
   vector<int> temp(nums.size());
   quick_sort(nums, 0, nums.size());
+  for (int i = 0; i < nums.size(); ++i)
+  {
+  	cout << 
+  }
 }
 
 

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+#include <list>
 
 using namespace std;
 
@@ -11,22 +12,26 @@ class Solution {
    public:
     string frequencySort(string s) {
         unordered_map<char, int> mp;
-        int length = s.length();
-        for (auto &ch : s) {
-            mp[ch]++;
+        int max_count = 0;
+        for (auto ch : s) {
+            max_count = max(max_count, ++mp[ch]);
         }
-        vector<pair<char, int>> vec;
-        for (auto &it : mp) {
-            vec.emplace_back(it);
+        // std::cout << max_count << endl;
+        vector<list<char>> buckets(max_count + 1);
+        for (const auto& p : mp) {
+            buckets[p.second].push_back(p.first);
         }
-        sort(vec.begin(), vec.end(), [](const pair<char, int> &a, const pair<char, int> &b) { return a.second > b.second; });
-        string ret;
-        for (auto &[ch, num] : vec) {
-            for (int i = 0; i < num; i++) {
-                ret.push_back(ch);
+        string ans;
+        for (int i = max_count; i >= 0 ; --i) {
+            for (auto j : buckets[i]) {
+                auto temp = i;
+                while(temp != 0){
+                    temp--;
+                    ans += j;
+                }
             }
         }
-        return ret;
+        return ans;
     }
 };
 
