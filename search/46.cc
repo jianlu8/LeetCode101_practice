@@ -27,19 +27,30 @@ class Solution {
   // 辅函数
   void backtracking(vector<int>& nums, int level, vector<vector<int>>& ans) {
     if (level == nums.size() - 1) {
+      // printvec(nums);
       ans.push_back(nums);
       return;
     }
+    cout << "level= " << level << endl;
     for (int i = level; i < nums.size(); i++) {
       swap(nums[i], nums[level]);          // 修改当前节点状态
-      backtracking(nums, level + 1, ans);  // 递归子节点
+      printvec(nums);
+      backtracking(nums, level + 1, ans); 
+       // 递归子节点
       swap(nums[i], nums[level]);          // 回改当前节点状态
     }
+  }
+  void printvec(vector<int> nums){
+    for (int i = 0; i < nums.size(); ++i){
+      cout << nums[i];
+      /* code */
+    }
+    cout << "---------" << endl;
   }
 };
 
 int main(int argc, char const* argv[]) {
-  vector<int> grid = {3, 2, 1, 4};
+  vector<int> grid = {1,2,3};
 
   Solution sol;
 
