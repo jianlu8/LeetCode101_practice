@@ -8,15 +8,20 @@
 #include <vector>
 
 using namespace std;
+//类似于在矩阵中寻找字符串，本题也是通过修改状态矩阵来进行回溯。不同的是，我们需要
+//对每一行、列、左斜、
+//右斜建立访问数组，来记录它们是否存在皇后。本题有一个隐藏的条件，即满足条件的结果中每一行或列有且仅有一
+//个皇后。这是因为我们 一共只有 n 行和 n
+//列。所以如果我们通过对每一行遍历来插入皇后，我们就不需要对行建立访问 数组了。
 
 class Solution {
  public:
   vector<vector<string>> solveNQueens(int n) {
     vector<vector<string>> ans;
-    if (n == 0){
+    if (n == 0) {
       return ans;
     }
-    vector<string> board(n, string(n, ","));
+    vector<string> board(n, string(n, '.'));
     vector<bool> column(n, false), ldiag(2 * n - 1, false),
         rdiag(2 * n - 1, false);
     backtracking(ans, board, column, ldiag, rdiag, 0, n);
@@ -33,25 +38,23 @@ class Solution {
       if (column[i] || ldiag[n - row + i - 1] || rdiag[row + i]) {
         continue;
       }
-      board[row][i] = "Q";
+      board[row][i] = 'Q';
       column[i] = ldiag[n - row + i - 1] = rdiag[row + i] = true;
       // 递归子节点
       backtracking(ans, board, column, ldiag, rdiag, row + 1,
                    n);  // 回改当前节点状态
-      board[row][i] = ".";
+      board[row][i] = '.';
       column[i] = ldiag[n - row + i - 1] = rdiag[row + i] = false;
     }
   }
 };
 
 int main(int argc, char const *argv[]) {
-  vector<vector<char>> board = {
-      {'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
-  string word = "O";
+  int n = 4;
 
   Solution sol;
 
-  bool out = sol.exist(board, word);
+  vector<vector<string>> out = sol.solveNQueens(n);
 
-  cout << out << std::endl;
+  cout << out.size() << std::endl;
 }
