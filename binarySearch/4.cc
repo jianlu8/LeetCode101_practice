@@ -1,4 +1,5 @@
 #include <limits.h>
+#include <float.h>
 
 #include <cmath>
 #include <iostream>
@@ -49,9 +50,11 @@ class Solution {
 int main(int argc, char const* argv[]) {
   vector<int> nums1 = {5, 7, 7, 8, 8, 10, 10};
   vector<int> nums2 = {5, 7, 7, 8, 8, 10, 10};
-
+  
   Solution sol;
 
   int out = sol.findMedianSortedArrays(nums1, nums2);
   std::cout << out << std::endl;
+  std::cout << FLT_ROUNDS << std::endl;
+  
 }
