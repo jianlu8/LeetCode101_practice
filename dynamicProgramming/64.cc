@@ -30,9 +30,9 @@ class Solution {
 };
 
 int main(int argc, char const* argv[]) {
-  vector<vector<int>> n = {{1, 3, 1},
-                           {1, 5, 1},
-                           {4, 2, 1}};
+  vector<vector<int>> n = {{1, 3, 1},   //  1
+                           {1, 5, 1},   //
+                           {4, 2, 1}};  //
   //                 0,0,1,2,0,0,1
   Solution sol;
 
