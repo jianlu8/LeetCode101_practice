@@ -38,6 +38,6 @@ int main(int argc, char const* argv[]) {
   cout << out << endl;
 }
 // 2 2 2 3 
-// 1 1 2
-//     3 3
-//       4 3
+// 1 1 1
+//     2 2
+//       3 3
